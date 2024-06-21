@@ -1,11 +1,12 @@
 from flask import Flask, render_template, Response
-import cv2
+import cv2, ffmpegcv
 
 app = Flask(__name__)
 
 def generate_frames():
     """Generate Frame by Frame from Camera"""
-    cam = cv2.VideoCapture("rtsp://localhost:8554/stream")
+    # cam = cv2.VideoCapture("rtsp://120.125.10.220:554/chID=1&streamType=main")
+    cam = ffmpegcv.VideoCaptureStreamRT("rtsp://120.125.10.220:554/chID=1&streamType=main")
 
     while True:
         # Capture frame by frame
